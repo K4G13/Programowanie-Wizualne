@@ -11,15 +11,15 @@ namespace PhonesApp
             string libraryName = System.Configuration.ConfigurationManager.AppSettings["DAOLibraryName"]!;
             BLC.BLC blc = new BLC.BLC(libraryName);
 
-            foreach (IProducer p in blc.GetProducers())
+            /*foreach (IProducer producer in blc.GetProducers())
             {
-                Console.WriteLine($"{p.ID}: {p.Name}");
+                Console.WriteLine($"{producer.ID}: {producer.Name}");
             }
             Console.WriteLine("-----------------------");
             foreach (IPhone phone in blc.GetPhones())
             {
                 Console.WriteLine($"{phone.ID}: {phone.Producer.Name} {phone.Name} {phone.DiagonalScreenSize} {phone.DisplayType}");
-            }
+            }*/
 
         }
     }
