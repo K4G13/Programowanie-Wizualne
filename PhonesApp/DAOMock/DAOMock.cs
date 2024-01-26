@@ -4,6 +4,8 @@ namespace DAOMock
 {
     internal class DAOMock : IDAO
     {
+        //public bool checkDBConnection() => true;
+
         private List<IProducer> producers;
         private List<IPhone> phones;
 
@@ -40,6 +42,26 @@ namespace DAOMock
         public IEnumerable<IProducer> GetAllProducers()
         {
             return producers;
+        }
+
+        public void SaveProducer(IProducer producer)
+        {
+            producers.Add(producer);
+        }
+
+        public void SavePhone(IPhone phone)
+        {
+            phones.Add(phone);
+        }
+
+        public void DeleteProducer(IProducer producer)
+        {
+            producers.Remove(producer);
+        }
+
+        public void DeletePhone(IPhone phone)
+        {
+            phones.Remove(phone);
         }
     }
 }

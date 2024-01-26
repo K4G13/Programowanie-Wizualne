@@ -22,7 +22,7 @@ namespace DAOSql
         public Phone() 
         {
             ID = 0;
-            Name = "";
+            Name = "N/A";
             Producer = new Producer();
             DiagonalScreenSize = 0;
             DisplayType = (DisplayType)0;
@@ -30,7 +30,7 @@ namespace DAOSql
         public Phone(int _ID)
         {
             ID = _ID;
-            Name = "";
+            Name = "N/A";
             Producer = new Producer();
             DiagonalScreenSize = 0;
             DisplayType = (DisplayType)0;

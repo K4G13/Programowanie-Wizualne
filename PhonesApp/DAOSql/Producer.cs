@@ -13,14 +13,14 @@ namespace DAOSql
         public Producer()
         {
             ID = 0;
-            Name = "";
-            CountryOfOrigin = "";
+            Name = "N/A";
+            CountryOfOrigin = "N/A";
         }
         public Producer(int _ID)
         {
             ID = _ID;
-            Name = "";
-            CountryOfOrigin = "";
+            Name = "N/A";
+            CountryOfOrigin = "N/A";
         }
         public Producer(int _ID, string _Name, string _Country) 
         { 
