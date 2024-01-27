@@ -27,6 +27,7 @@ namespace DAOSql
                 //Console.WriteLine(ex.ToString());
                 Console.WriteLine("Tworze migracje");
                 db.Database.Migrate();
+                db.SaveChanges();
             }
         }
 
