@@ -20,8 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BLC\BLC.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\DAOMock\DAOMock.csproj" />
-    <ProjectReference Include="..\DAOSql\DAOSql.csproj" />
     <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
   </ItemGroup>
 
