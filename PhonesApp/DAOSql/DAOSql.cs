@@ -9,12 +9,12 @@ namespace DAOSql
 
         public DAOSql()
         {
-            try { 
-                //Console.WriteLine($"Table w {db.Database.GetDbConnection().Database}:");
-                //foreach (var table in db.Model.GetEntityTypes())
-                //{
-                //    Console.WriteLine($"Tabela: {table.GetTableName()}");
-                //}
+            try {
+                Console.WriteLine($"Table w {db.Database.GetDbConnection().Database}:");
+                foreach (var table in db.Model.GetEntityTypes())
+                {
+                    Console.WriteLine($"Tabela: {table.GetTableName()}");
+                }
                 var firstPhone = db.Phones.FirstOrDefault();
                 Console.WriteLine("Baza danych załadowana poprawnie");
                 //if (firstPhone != null)
