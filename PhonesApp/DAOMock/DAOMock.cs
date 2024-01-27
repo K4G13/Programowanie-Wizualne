@@ -4,7 +4,6 @@ namespace DAOMock
 {
     internal class DAOMock : IDAO
     {
-        //public bool checkDBConnection() => true;
 
         private List<IProducer> producers;
         private List<IPhone> phones;

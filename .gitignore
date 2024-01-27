@@ -1,19 +1,21 @@
-PhonesApp/PhonesApp/bin/*
-PhonesApp/PhonesApp/obj/*
+PhonesApp/PhonesApp/bin
+PhonesApp/PhonesApp/obj
 PhonesApp/PhonesApp/*.db
 
-PhonesApp/BLC/bin/*
-PhonesApp/BLC/obj/*
+PhonesApp/BLC/bin
+PhonesApp/BLC/obj
 
-PhonesApp/Core/bin/*
-PhonesApp/Core/obj/*
+PhonesApp/Core/bin
+PhonesApp/Core/obj
 
-PhonesApp/DAOMock/bin/*
-PhonesApp/DAOMock/obj/*
+PhonesApp/DAOMock/bin
+PhonesApp/DAOMock/obj
 
-PhonesApp/DAOSql/bin/*
-PhonesApp/DAOSql/obj/*
-PhonesApp/DAOSql/Migrations/*
+PhonesApp/DAOSql/bin
+PhonesApp/DAOSql/obj
+PhonesApp/DAOSql/Migrations
 
-PhonesApp/Interface/bin/*
-PhonesApp/Interface/obj/*
+PhonesApp/Interfaces/bin
+PhonesApp/Interfaces/obj
+
+PhonesApp/.vs

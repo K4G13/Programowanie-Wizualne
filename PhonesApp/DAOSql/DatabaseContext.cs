@@ -18,7 +18,7 @@ namespace DAOSql
             //optionsBuilder.UseSqlite(conf.GetConnectionString("sqlite"));
             optionsBuilder.UseSqlite("Data source=DATABASE.db");
         }
-        
+
         public DbSet<Phone> Phones { get; set; }
         public DbSet<Producer> Producers { get; set; }
     }
