@@ -62,5 +62,10 @@ namespace BLC
             dao.DeletePhone(phone);
         }
 
+        public bool checkDBConnection()
+        {
+            return dao.checkDBConnection();
+        }
+
     }
 }
