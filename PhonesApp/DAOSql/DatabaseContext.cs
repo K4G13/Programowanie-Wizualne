@@ -17,6 +17,8 @@ namespace DAOSql
         {
             //optionsBuilder.UseSqlite(conf.GetConnectionString("sqlite"));
             optionsBuilder.UseSqlite("Data source=DATABASE.db");
+            //optionsBuilder.UseSqlite("Data source=C:\\Users\\GigaKOX\\source\\repos\\Programowanie-Wizualne1\\PhonesApp\\PhonesApp\\DATABASE.db");
+
         }
 
         public DbSet<Phone> Phones { get; set; }

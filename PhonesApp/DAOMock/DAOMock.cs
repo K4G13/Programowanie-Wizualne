@@ -7,6 +7,7 @@ namespace DAOMock
 
         private List<IProducer> producers;
         private List<IPhone> phones;
+        
 
         public DAOMock()
         {
@@ -61,6 +62,11 @@ namespace DAOMock
         public void DeletePhone(IPhone phone)
         {
             phones.Remove(phone);
+        }
+
+        public bool checkDBConnection()
+        {
+            return true;
         }
     }
 }

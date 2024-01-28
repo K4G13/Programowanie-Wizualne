@@ -10,6 +10,7 @@
         void SavePhone(IPhone phone);
         void DeleteProducer(IProducer producer);
         void DeletePhone(IPhone phone);
+        public bool checkDBConnection();
 
     }
 }

@@ -8,7 +8,7 @@ namespace PhonesApp
         {
             string libraryName = System.Configuration.ConfigurationManager.AppSettings["DAOLibraryName"]!;
             BLC.BLC blc = new BLC.BLC(libraryName);
-
+            blc.checkDBConnection();
 
             blc.SavePhone(blc.NewPhone());
 
