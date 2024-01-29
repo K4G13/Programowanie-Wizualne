@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PhonesAppMAUI.ViewModels"
+             x:Class="PhonesAppMAUI.PhonesPage"
+             Title="PhonesPage">
+    <VerticalStackLayout>
+
+        <ListView ItemsSource="{Binding Phones}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <HorizontalStackLayout x:DataType="viewmodel:PhoneViewModel">
+                            <Label Text="{Binding ID}" WidthRequest="40"/>
+                            <Label Text="{Binding Producer.Name}" WidthRequest="100"/>
+                            <Label Text="{Binding Name}" WidthRequest="200"/>
+                            <Label Text="{Binding DiagonalScreenSize}" WidthRequest="40"/>
+                            <Label Text="{Binding DisplayType}" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+                  ColumnDefinitions="Auto,Auto">
+
+            <Label Grid.Column="0" Grid.Row="0" Text="ID"/>
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding ID}"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Producer"/>
+            <Entry Grid.Column="1" Grid.Row="1" Text="???"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Text="Name"/>
+            <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Name}"/>
+
+            <Label Grid.Column="0" Grid.Row="3" Text="Display Screen Size"/>
+            <Entry Grid.Column="1" Grid.Row="3" Text="{Binding DiagonalScreenSize}"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Text="Display Type"/>
+            <Entry Grid.Column="1" Grid.Row="4" Text="{Binding DisplayType}"/>
+
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -23,9 +23,9 @@ namespace PhonesApp
                 Console.WriteLine($"{phone.ID}: {phone.Producer.Name} {phone.Name} {phone.DiagonalScreenSize} {phone.DisplayType}");
             }
 
-            Console.WriteLine("-Czyszcze-bazę danych--------");
-            foreach (IProducer producer in blc.GetProducers()) blc.DeleteProducer(producer);
-            foreach (IPhone phone in blc.GetPhones()) blc.DeletePhone(phone);
+            //Console.WriteLine("-Czyszcze-bazę danych--------");
+            //foreach (IProducer producer in blc.GetProducers()) blc.DeleteProducer(producer);
+            //foreach (IPhone phone in blc.GetPhones()) blc.DeletePhone(phone);
 
         }
     }
