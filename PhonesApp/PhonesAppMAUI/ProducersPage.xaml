@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PhonesAppMAUI.ViewModels"
+             x:Class="PhonesAppMAUI.ProducersPage"
+             Title="ProducersPage">
+
+    <VerticalStackLayout Spacing="10" Padding="20,0,0,0">
+
+        <ListView ItemsSource="{Binding Producers}" SelectedItem="{Binding SelectedProducer}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <HorizontalStackLayout x:DataType="viewmodel:ProducerViewModel">
+                            <Label Text="{Binding ID}" WidthRequest="40"/>
+                            <Label Text="{Binding Name}" WidthRequest="100"/>
+                            <Label Text="{Binding CountryOfOrigin}" WidthRequest="200"/>
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+                  ColumnDefinitions="Auto,200" 
+               RowSpacing="5" ColumnSpacing="10"
+            BindingContext="{Binding ProducerEdit}">
+
+            <Label Grid.Column="0" Grid.Row="0" Text="ID"/>
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding ID}"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Name"/>
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Name}"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Text="Country Of Origin"/>
+            <Entry Grid.Column="1" Grid.Row="2" Text="{Binding CountryOfOrigin}"/>
+        </Grid>
+
+
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="New Producer" Command="{Binding CreateNewProducerCommand}"/>
+            <Button Text="Save" Command="{Binding SaveProducerCommand}"/>
+            <Button Text="Delete" Command="{Binding DeleteProducerCommand}"/>
+            <Button Text="Cancel" Command="{Binding CancelEditCommand}"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

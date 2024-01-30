@@ -23,8 +23,11 @@ namespace PhonesAppMAUI
             builder.Services.AddSingleton<PhonesCollectionViewModel>( provider => new PhonesCollectionViewModel(blc) );
             builder.Services.AddSingleton<PhonesPage>();
 
+            builder.Services.AddSingleton<ProducersCollectionViewModel>(provider => new ProducersCollectionViewModel(blc));
+            builder.Services.AddSingleton<ProducersPage>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

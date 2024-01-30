@@ -4,7 +4,8 @@
              xmlns:viewmodel="clr-namespace:PhonesAppMAUI.ViewModels"
              x:Class="PhonesAppMAUI.PhonesPage"
              Title="PhonesPage">
-    <VerticalStackLayout>
+
+    <VerticalStackLayout Spacing="10" Padding="20,0,0,0">
 
         <ListView ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}">
             <ListView.ItemTemplate>
@@ -23,14 +24,18 @@
         </ListView>
 
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
-                  ColumnDefinitions="Auto,Auto"
+                  ColumnDefinitions="Auto,200" 
+               RowSpacing="5" ColumnSpacing="10" 
               BindingContext="{Binding PhoneEdit}">
 
             <Label Grid.Column="0" Grid.Row="0" Text="ID"/>
             <Entry Grid.Column="1" Grid.Row="0" Text="{Binding ID}"/>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Producer"/>
-            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Producer.Name}"/>
+            <Picker Grid.Column="1" Grid.Row="1"
+                    ItemsSource="{Binding ProducerValues}"
+                    SelectedItem="{Binding SelectedProducer}"
+                    ItemDisplayBinding="{Binding Name}"/>  
 
             <Label Grid.Column="0" Grid.Row="2" Text="Name"/>
             <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Name}"/>
@@ -40,24 +45,17 @@
 
             <Label Grid.Column="0" Grid.Row="4" Text="Display Type"/>
             <Picker Grid.Column="1" Grid.Row="4"
-                    ItemsSource="{Binding DisplayTypesValues}"
-                    ItemDisplayBinding="{Binding DisplayType}" />
-            
+                    ItemsSource="{Binding DisplayTypeValues}"
+                    SelectedItem="{Binding SelectedDisplayType}"/>
         </Grid>
 
-        <HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10">
             <Button Text="New Phone" Command="{Binding CreateNewPhoneCommand}"/>
             <Button Text="Save" Command="{Binding SavePhoneCommand}"/>
             <Button Text="Delete" Command="{Binding DeletePhoneCommand}"/>
             <Button Text="Cancel" Command="{Binding CancelEditCommand}"/>
         </HorizontalStackLayout>
-
-
-
-        
-        
-        
-        
 
     </VerticalStackLayout>
 </ContentPage>

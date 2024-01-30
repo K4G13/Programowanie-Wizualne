@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Core;
 using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,6 @@ namespace PhonesAppMAUI.ViewModels
         private BLC.BLC blc;
 
 
-        [ObservableProperty]///???
-        private IEnumerable<Core.DisplayType> displayTypesValues;
-
         public PhonesCollectionViewModel(BLC.BLC blc)
         {
             this.blc = blc;
@@ -31,13 +30,10 @@ namespace PhonesAppMAUI.ViewModels
                 phones.Add(new PhoneViewModel(phone));
             }
 
-            ///??
-            DisplayTypesValues = Enum.GetValues(typeof(Core.DisplayType)).Cast<Core.DisplayType>();
-
-
             IsEditing = false;
             PhoneEdit = null;
             SelectedPhoneBuffer = null;
+
         }
 
         [ObservableProperty]
@@ -51,11 +47,14 @@ namespace PhonesAppMAUI.ViewModels
         private void CreateNewPhone()
         {
             PhoneEdit = new PhoneViewModel(blc);
+            if (SelectedPhoneBuffer != null)
+            {
+                PhoneEdit.SelectedProducer = SelectedPhoneBuffer.Producer;
+            }
             PhoneEdit.PropertyChanged += OnPhoneEditPropertyChanged;
             IsEditing = true;
             RefreshCanExecute();
         }
-
         private bool CanCreateNewPhone() => !IsEditing;
 
 
@@ -85,6 +84,10 @@ namespace PhonesAppMAUI.ViewModels
         private void CancelEdit()
         {
             PhoneEdit.PropertyChanged -= OnPhoneEditPropertyChanged;
+            if (SelectedPhoneBuffer != null)
+            {
+                PhoneEdit.SelectedProducer = SelectedPhoneBuffer.Producer;
+            }
             PhoneEdit = null;
             SelectedPhoneBuffer = null;
             IsEditing = false;
@@ -105,10 +108,10 @@ namespace PhonesAppMAUI.ViewModels
 
             PhoneEdit = new PhoneViewModel(blc);
             PhoneEdit.ID = refPhone.ID;
-            PhoneEdit.Producer = refPhone.Producer;
             PhoneEdit.Name = refPhone.Name;
             PhoneEdit.DiagonalScreenSize = refPhone.DiagonalScreenSize;
             PhoneEdit.DisplayType = refPhone.DisplayType;
+            PhoneEdit.SelectedProducer = refPhone.Producer;
 
             PhoneEdit.PropertyChanged += OnPhoneEditPropertyChanged;
             IsEditing = true;
@@ -142,6 +145,10 @@ namespace PhonesAppMAUI.ViewModels
             CancelEditCommand.NotifyCanExecuteChanged();
             DeletePhoneCommand.NotifyCanExecuteChanged();
         }
+
+        
+
+
 
     }
 }

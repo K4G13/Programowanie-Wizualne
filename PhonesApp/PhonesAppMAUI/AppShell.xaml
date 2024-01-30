@@ -15,9 +15,14 @@
             Route="PhonesPage" />
 
         <ShellContent
+            Title="Producers Catalogue"
+            ContentTemplate="{DataTemplate local:ProducersPage}"
+            Route="PhonesPage" />
+
+        <!--ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
+            Route="MainPage" />-->
 
     </FlyoutItem>   
 
