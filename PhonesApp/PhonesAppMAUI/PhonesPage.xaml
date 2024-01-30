@@ -23,13 +23,14 @@
         </ListView>
 
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
-                  ColumnDefinitions="Auto,Auto">
+                  ColumnDefinitions="Auto,Auto"
+              BindingContext="{Binding PhoneEdit}">
 
             <Label Grid.Column="0" Grid.Row="0" Text="ID"/>
             <Entry Grid.Column="1" Grid.Row="0" Text="{Binding ID}"/>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Producer"/>
-            <Entry Grid.Column="1" Grid.Row="1" Text="???"/>
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Producer.Name}"/>
 
             <Label Grid.Column="0" Grid.Row="2" Text="Name"/>
             <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Name}"/>
@@ -41,6 +42,12 @@
             <Entry Grid.Column="1" Grid.Row="4" Text="{Binding DisplayType}"/>
 
         </Grid>
+
+        <HorizontalStackLayout>
+            <Button Text="New Phone" Command="{Binding CreateNewPhoneCommand}"/>
+            <Button Text="Save Phone" Command="{Binding SavePhoneCommand}"/>
+            <Button Text="Cancel" Command="{Binding CancelEditCommand}"/>
+        </HorizontalStackLayout>
 
     </VerticalStackLayout>
 </ContentPage>

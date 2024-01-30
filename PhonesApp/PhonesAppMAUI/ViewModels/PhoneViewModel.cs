@@ -35,5 +35,11 @@ namespace PhonesAppMAUI.ViewModels
             DiagonalScreenSize = phone.DiagonalScreenSize;
             DisplayType = phone.DisplayType;
         }
+
+        public PhoneViewModel( BLC.BLC blc )
+        {
+            blc.NewPhone();
+        }
+
     }
 }
