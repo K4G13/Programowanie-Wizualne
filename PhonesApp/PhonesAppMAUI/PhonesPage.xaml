@@ -6,7 +6,7 @@
              Title="PhonesPage">
     <VerticalStackLayout>
 
-        <ListView ItemsSource="{Binding Phones}">
+        <ListView ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -39,15 +39,25 @@
             <Entry Grid.Column="1" Grid.Row="3" Text="{Binding DiagonalScreenSize}"/>
 
             <Label Grid.Column="0" Grid.Row="4" Text="Display Type"/>
-            <Entry Grid.Column="1" Grid.Row="4" Text="{Binding DisplayType}"/>
-
+            <Picker Grid.Column="1" Grid.Row="4"
+                    ItemsSource="{Binding DisplayTypesValues}"
+                    ItemDisplayBinding="{Binding DisplayType}" />
+            
         </Grid>
 
         <HorizontalStackLayout>
             <Button Text="New Phone" Command="{Binding CreateNewPhoneCommand}"/>
-            <Button Text="Save Phone" Command="{Binding SavePhoneCommand}"/>
+            <Button Text="Save" Command="{Binding SavePhoneCommand}"/>
+            <Button Text="Delete" Command="{Binding DeletePhoneCommand}"/>
             <Button Text="Cancel" Command="{Binding CancelEditCommand}"/>
         </HorizontalStackLayout>
+
+
+
+        
+        
+        
+        
 
     </VerticalStackLayout>
 </ContentPage>
