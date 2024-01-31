@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Core;
+using Interfaces;
 
 namespace DAOMock
 {
@@ -44,6 +45,19 @@ namespace DAOMock
             return producers;
         }
 
+        public IProducer? GetProducer(int id)
+        {
+            IProducer? producer = null;
+            foreach(IProducer _producer in producers)
+            {
+                if (_producer.ID == id)
+                {
+                    producer = _producer;
+                }
+            }
+            return producer;
+        }
+
         public void SaveProducer(IProducer producer)
         {
             producers.Add(producer);
@@ -67,6 +81,75 @@ namespace DAOMock
         public bool checkDBConnection()
         {
             return true;
+        }
+
+        public bool UpdateProducer(int id, CreateProducerDto producer)
+        {
+            IProducer? oldProducer = null;
+            foreach (IProducer _producer in producers)
+            {
+                if (_producer.ID == id)
+                {
+                    oldProducer = _producer;
+                }
+            }
+            if (oldProducer == null)
+            {
+                return false;
+            }
+            oldProducer.Name = producer.Name;
+            oldProducer.CountryOfOrigin = producer.CountryOfOrigin;
+            return true;
+        }
+
+        public int UpdatePhone(int phoneId, CreatePhoneDto phone)
+        {
+            IPhone? oldPhone = null;
+            foreach (IPhone _phone in  phones)
+            {
+                if (_phone.ID == phoneId)
+                {
+                    oldPhone = _phone;
+                }
+            }
+            if (oldPhone == null)
+            {
+                return 1;
+            }
+            oldPhone.Name = phone.Name;
+            oldPhone.DiagonalScreenSize = phone.DiagonalScreenSize;
+            oldPhone.DisplayType = phone.DisplayType;
+            IProducer? oldProducer = null;
+            foreach (IProducer _producer in producers)
+            {
+                if (_producer.ID == phone.ProducerId)
+                {
+                    oldProducer = _producer;
+                }
+            }
+            if (oldProducer == null)
+            {
+                return 2;
+            }
+            return 0;
+        }
+
+        public IPhone? GetPhone(int phoneId)
+        {
+            IPhone? phone = null;
+            foreach(IPhone _phone in phones)
+            {
+                if (_phone.ID == phoneId)
+                {
+                    phone = _phone;
+                }
+            }
+            return phone;
+        }
+
+        public IEnumerable<IPhone> GetPhoneByProducerId(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

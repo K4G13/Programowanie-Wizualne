@@ -10,6 +10,7 @@ namespace DAOSql
         public string Name { get; set; }
         public string CountryOfOrigin { get; set; }
 
+
         public Producer()
         {
             ID = 0;

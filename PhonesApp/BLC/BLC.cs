@@ -1,9 +1,10 @@
-﻿using Interfaces;
+﻿using Core;
+using Interfaces;
 using System.Reflection;
 
 namespace BLC
 {
-    public class BLC
+    public class BLC : IBLC
     {
         private IDAO dao;
 
@@ -27,6 +28,16 @@ namespace BLC
         public IEnumerable<IProducer> GetProducers()
         {
             return dao.GetAllProducers();
+        }
+
+        public IProducer? GetProducer(int id)
+        {
+            return dao.GetProducer(id);
+        }
+
+        public IPhone? GetPhone(int id)
+        {
+            return dao.GetPhone(id);
         }
 
         public IEnumerable<IPhone> GetPhones()
@@ -62,10 +73,27 @@ namespace BLC
             dao.DeletePhone(phone);
         }
 
+        public bool UpdateProducer(int id, CreateProducerDto producer)
+        {
+
+            return dao.UpdateProducer(id, producer);
+        }
+
+        public int UpdatePhone(int phoneId, CreatePhoneDto phone)
+        {
+            return dao.UpdatePhone(phoneId, phone);
+        }
+
         public bool checkDBConnection()
         {
             return dao.checkDBConnection();
         }
+
+        public IEnumerable<IPhone> GetPhonesByProducerId(int id)
+        {
+            return dao.GetPhoneByProducerId(id);
+        }
+
 
     }
 }

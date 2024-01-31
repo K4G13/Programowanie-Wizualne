@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Core;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAOSql
@@ -69,9 +70,19 @@ namespace DAOSql
             return db.Producers;
         }
 
+        public IProducer? GetProducer(int id)
+        {
+            return db.Producers.FirstOrDefault(c => c.ID == id);
+        }
+
         public IEnumerable<IPhone> GetAllPhones()
         {
-            return db.Phones;
+            return db.Phones.Include(a => a.Producer);
+        }
+
+        public IPhone? GetPhone(int id)
+        {
+            return db.Phones.FirstOrDefault(c => c.ID == id);
         }
 
         public IProducer CreateNewProducer()
@@ -109,5 +120,53 @@ namespace DAOSql
             db.Entry(phone).State = EntityState.Deleted;
             db.SaveChanges();
         }
+
+        public bool UpdateProducer(int id, CreateProducerDto producer)
+        {
+            IProducer? oldProducer = db.Producers.FirstOrDefault(c => c.ID == id);
+            if (oldProducer == null)
+            {
+                return false;
+            }
+
+            oldProducer.Name = producer.Name;
+            oldProducer.CountryOfOrigin = producer.CountryOfOrigin;
+            db.SaveChanges();
+            return true;
+        }
+
+        public int UpdatePhone(int phoneId, CreatePhoneDto phone)
+        {
+            IPhone? oldPhone = db.Phones.FirstOrDefault(c =>c.ID == phoneId);
+            if (oldPhone == null)
+            {
+                return 1;
+            }
+            oldPhone.Name = phone.Name;
+            oldPhone.DiagonalScreenSize = phone.DiagonalScreenSize;
+            oldPhone.DisplayType = phone.DisplayType;
+            IProducer? producer = db.Producers.FirstOrDefault(c=>c.ID == phone.ProducerId);
+            if (producer == null)
+            {
+                return 2;
+            }
+            oldPhone.Producer = producer;
+            db.SaveChanges();
+            return 0;
+        }
+
+        public IEnumerable<IPhone> GetPhoneByProducerId(int id)
+        { 
+            List<IPhone> _phones = new List<IPhone>();
+            foreach(IPhone __phone in db.Phones)
+            {
+                if (__phone.Producer.ID == id)
+                {
+                    _phones.Add(__phone);
+                }
+            }
+            return _phones;
+        }
+
     }
 }
