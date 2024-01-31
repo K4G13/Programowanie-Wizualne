@@ -20,7 +20,7 @@ namespace PhonesApp
             Console.WriteLine("-Phones----------------------");
             foreach (IPhone phone in blc.GetPhones())
             {
-                Console.WriteLine($"{phone.ID}: {phone.Producer.Name} {phone.Name} {phone.DiagonalScreenSize} {phone.DisplayType}");
+                Console.WriteLine($"{phone.ID}:  {phone.Name} {phone.DiagonalScreenSize} {phone.DisplayType}");
             }
 
             Console.WriteLine("-Czyszcze-bazę danych--------");
