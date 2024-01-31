@@ -18,3 +18,8 @@ PhonesApp/Interfaces/bin
 PhonesApp/Interfaces/obj
 
 PhonesApp/.vs
+
+.vs
+
+PhonesApp/PhonesAppMAUI/bin
+PhonesApp/PhonesAppMAUI/obj
