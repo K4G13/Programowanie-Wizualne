@@ -28,8 +28,7 @@
                RowSpacing="5" ColumnSpacing="10" 
               BindingContext="{Binding PhoneEdit}">
 
-            <Label Grid.Column="0" Grid.Row="0" Text="ID"/>
-            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding ID}"/>
+
 
             <Label Grid.Column="0" Grid.Row="1" Text="Producer"/>
             <Picker Grid.Column="1" Grid.Row="1"

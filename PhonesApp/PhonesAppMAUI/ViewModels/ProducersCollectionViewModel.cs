@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Interfaces;
+using PhonesAppMAUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,17 +53,27 @@ namespace PhonesAppMAUI.ViewModels
 
 
         [RelayCommand(CanExecute = nameof(CanEditBeSaved))]
-        private void SaveProducer()
+        private void SaveProducer() 
         {
-
+            Producer producer = new Producer();
             if (SelectedProducer != null)
             {
+                producer.ID = SelectedProducer.ID;
+                producer.Name = SelectedProducer.Name;
+                producer.CountryOfOrigin = SelectedProducer.CountryOfOrigin;
                 Producers.Remove(SelectedProducer);
-                blc.DeleteProducer(SelectedProducer);
+                blc.DeleteProducer(producer);
             }
-
-            Producers.Add(ProducerEdit);
-            blc.SaveProducer(ProducerEdit);
+            producer.ID = ProducerEdit.ID;
+            producer.Name = ProducerEdit.Name;
+            producer.CountryOfOrigin = ProducerEdit.CountryOfOrigin;
+            blc.SaveProducer(producer);
+            IEnumerable<IProducer> producersDB = blc.GetProducers();
+            producers.Clear();
+            foreach (var _producer in producersDB)
+            {
+                producers.Add(new ProducerViewModel(_producer));
+            }
 
             ProducerEdit.PropertyChanged -= OnProducerEditPropertyChanged;
             ProducerEdit = null;
@@ -109,8 +120,14 @@ namespace PhonesAppMAUI.ViewModels
         [RelayCommand(CanExecute = nameof(CanDeleteProducer))]
         private void DeleteProducer()
         {
+            Producer producer = new Producer();
+            producer.ID = SelectedProducer.ID;
+            producer.Name = SelectedProducer.Name;
+            producer.CountryOfOrigin = SelectedProducer.CountryOfOrigin;
+
+
             Producers.Remove(SelectedProducer);
-            blc.DeleteProducer(SelectedProducer);
+            blc.DeleteProducer(producer);
 
             ProducerEdit.PropertyChanged -= OnProducerEditPropertyChanged;
             ProducerEdit = null;

@@ -67,9 +67,13 @@ namespace PhonesAppMAUI.ViewModels
                 Phones.Remove(SelectedPhone);
                 blc.DeletePhone(SelectedPhone);
             }
-
-            Phones.Add(PhoneEdit);
             blc.SavePhone(PhoneEdit);
+            phones.Clear();
+            IEnumerable<IPhone> phonesDB = blc.GetPhones();
+            foreach (var phone in phonesDB)
+            {
+                phones.Add(new PhoneViewModel(phone));
+            }
 
             PhoneEdit.PropertyChanged -= OnPhoneEditPropertyChanged;
             PhoneEdit = null;
@@ -77,7 +81,7 @@ namespace PhonesAppMAUI.ViewModels
             IsEditing = false;
             RefreshCanExecute();
         }
-        private bool CanEditBeSaved() => PhoneEdit != null && PhoneEdit.Name != null && PhoneEdit.ID >= 0;
+        private bool CanEditBeSaved() => PhoneEdit != null && PhoneEdit.Name != null && PhoneEdit.ID >= 0 && PhoneEdit.Producer != null;
 
 
         [RelayCommand(CanExecute = nameof(CanEditBeCanceled))]

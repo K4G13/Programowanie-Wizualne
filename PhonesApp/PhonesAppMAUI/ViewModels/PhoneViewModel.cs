@@ -42,7 +42,12 @@ namespace PhonesAppMAUI.ViewModels
         {
             blc.NewPhone();
             DisplayTypeValues = Enum.GetValues(typeof(Core.DisplayType)).Cast<Core.DisplayType>().ToList();
-            ProducerValues = (List<IProducer>?)blc.GetProducers();
+            ProducerValues = new List<IProducer>();
+            IEnumerable<IProducer> producers = blc.GetProducers();
+            foreach ( var producer in producers )
+            {
+                ProducerValues.Add( producer );
+            }
         }
 
 

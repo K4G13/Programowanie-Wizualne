@@ -8,6 +8,7 @@ namespace DAOSql
     public class Phone : IPhone
     {
         [Key]
+        
         public int ID { get; set; }
         public string Name { get; set; }
         public Producer Producer { get; set; }
@@ -21,7 +22,6 @@ namespace DAOSql
 
         public Phone() 
         {
-            ID = 0;
             Name = "N/A";
             Producer = new Producer();
             DiagonalScreenSize = 0;

@@ -97,6 +97,7 @@ namespace DAOSql
 
         public void SaveProducer(IProducer producer)
         {
+            producer = new Producer(producer.ID, producer.Name, producer.CountryOfOrigin);
             db.Producers.Add( (Producer)producer );
             db.Entry(producer).State = EntityState.Added;
             db.SaveChanges();
@@ -104,18 +105,21 @@ namespace DAOSql
 
         public void SavePhone(IPhone phone)
         {
+            phone = new Phone(phone.ID, phone.Name, (Producer)phone.Producer, phone.DiagonalScreenSize, phone.DisplayType);
             db.Phones.Add( (Phone)phone );
             db.Entry(phone).State = EntityState.Added;
             db.SaveChanges();
         }
 
         public void DeleteProducer(IProducer producer) {
+            producer = db.Producers.FirstOrDefault(c => c.ID == producer.ID);
             db.Producers.Remove( (Producer)producer );
             db.Entry(producer).State = EntityState.Deleted;
             db.SaveChanges();
         }
 
-        public void DeletePhone(IPhone phone) { 
+        public void DeletePhone(IPhone phone) {
+            phone = db.Phones.FirstOrDefault(c => c.ID == phone.ID);
             db.Phones.Remove( (Phone)phone );
             db.Entry(phone).State = EntityState.Deleted;
             db.SaveChanges();
